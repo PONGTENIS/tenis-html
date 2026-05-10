@@ -1,1 +1,1 @@
-{"buildCommand": null, "outputDirectory": ".", "framework": null}
+{"buildCommand": null, "outputDirectory": ".", "framework": null, "functions": {"api/*.js": {"runtime": "nodejs18.x"}}}
