@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<!-- saved from url=(0047)file:///C:/Users/usuario/Downloads/index_2.html -->
-<html lang="es"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+<html lang="es">
+<head>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Turnos - Tenis de Mesa</title>
 <style>
@@ -70,8 +70,8 @@ td{padding:10px;border-bottom:1px solid #f0f0ec;vertical-align:middle}
 <body>
 <div class="app">
   <div class="tabs">
-    <button class="tab active" onclick="setTab(&#39;client&#39;)">🏓 Reservar turno</button>
-    <button class="tab" onclick="setTab(&#39;admin&#39;)">⚙️ Panel admin</button>
+    <button class="tab active" onclick="setTab('client')">🏓 Reservar turno</button>
+    <button class="tab" onclick="setTab('admin')">⚙️ Panel admin</button>
   </div>
 
   <!-- CLIENT VIEW -->
@@ -82,38 +82,10 @@ td{padding:10px;border-bottom:1px solid #f0f0ec;vertical-align:middle}
     <div id="calendar-view">
       <div class="week-nav">
         <button onclick="changeWeek(-1)">‹</button>
-        <span class="week-label" id="week-label">4 mayo – 10 mayo 2026</span>
+        <span class="week-label" id="week-label"></span>
         <button onclick="changeWeek(1)">›</button>
       </div>
-      <div class="days-grid" id="days-grid"><div class="day-btn disabled " onclick="">
-      <div class="day-name">Lun</div>
-      <div class="day-num">4</div>
-      
-    </div><div class="day-btn disabled " onclick="">
-      <div class="day-name">Mar</div>
-      <div class="day-num">5</div>
-      
-    </div><div class="day-btn  " onclick="selectDay(&#39;2026-05-06&#39;)">
-      <div class="day-name">Mié</div>
-      <div class="day-num">6</div>
-      <div class="day-avail">5 libres</div>
-    </div><div class="day-btn  " onclick="selectDay(&#39;2026-05-07&#39;)">
-      <div class="day-name">Jue</div>
-      <div class="day-num">7</div>
-      <div class="day-avail">5 libres</div>
-    </div><div class="day-btn  " onclick="selectDay(&#39;2026-05-08&#39;)">
-      <div class="day-name">Vie</div>
-      <div class="day-num">8</div>
-      <div class="day-avail">5 libres</div>
-    </div><div class="day-btn  " onclick="selectDay(&#39;2026-05-09&#39;)">
-      <div class="day-name">Sáb</div>
-      <div class="day-num">9</div>
-      <div class="day-avail">9 libres</div>
-    </div><div class="day-btn  " onclick="selectDay(&#39;2026-05-10&#39;)">
-      <div class="day-name">Dom</div>
-      <div class="day-num">10</div>
-      <div class="day-avail">5 libres</div>
-    </div></div>
+      <div class="days-grid" id="days-grid"></div>
       <div id="slots-section" style="display:none">
         <div class="slots-title" id="slots-title"></div>
         <div class="slots-grid" id="slots-grid"></div>
@@ -125,7 +97,7 @@ td{padding:10px;border-bottom:1px solid #f0f0ec;vertical-align:middle}
         <div class="form-row"><label>Nombre completo *</label><input type="text" id="f-nombre" placeholder="Ej: María González" oninput="checkForm()"></div>
         <div class="form-row"><label>Email *</label><input type="email" id="f-email" placeholder="tu@email.com" oninput="checkForm()"></div>
         <div class="form-row"><label>Teléfono (opcional)</label><input type="tel" id="f-telefono" placeholder="+54 11 1234-5678"></div>
-        <button class="btn-confirm" id="btn-confirm" disabled="" onclick="confirmBooking()">Confirmar turno</button>
+        <button class="btn-confirm" id="btn-confirm" disabled onclick="confirmBooking()">Confirmar turno</button>
       </div>
     </div>
 
@@ -143,7 +115,7 @@ td{padding:10px;border-bottom:1px solid #f0f0ec;vertical-align:middle}
   <div id="admin-view" style="display:none">
     <div id="admin-login" class="login-card">
       <div class="form-title">Acceso administrador</div>
-      <div class="form-row"><label>Contraseña</label><input type="password" id="admin-pwd" placeholder="••••••••" onkeydown="if(event.key===&#39;Enter&#39;)adminLogin()"></div>
+      <div class="form-row"><label>Contraseña</label><input type="password" id="admin-pwd" placeholder="••••••••" onkeydown="if(event.key==='Enter')adminLogin()"></div>
       <button class="btn-confirm" onclick="adminLogin()">Entrar</button>
     </div>
     <div id="admin-panel" style="display:none">
@@ -168,7 +140,7 @@ td{padding:10px;border-bottom:1px solid #f0f0ec;vertical-align:middle}
 
 <script>
 const SUPABASE_URL = 'https://glwcnlxtzmdlxcxkqbbp.supabase.co'
-const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imdsd2NubHh0em1kbHhjeGtxYmJwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgwODExNTIsImV4cCI6MjA5MzY1NzE1Mn0.0Q_3Vj1pMQRMbsdLPJfL561sqNEJgAcn4YIXhe_aDz8'
+const SUPABASE_KEY = 'sb_publisable_XdlIkaJUp2MFzZ29BaBh9A_8iFboeYj'
 const ADMIN_PWD = 'admin123'
 const MONTHS = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre']
 const DAY_NAMES = ['Dom','Lun','Mar','Mié','Jue','Vie','Sáb']
@@ -288,6 +260,14 @@ async function confirmBooking(){
   if(res&&res[0]&&res[0].id){
     if(!takenSlots[fecha])takenSlots[fecha]=[]
     takenSlots[fecha].push(turno)
+    // Enviar email de confirmación
+    try {
+      await fetch('/api/confirmar', {
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({nombre,email,fecha:fmtDate(fecha),turno})
+      })
+    } catch(e){ console.log('Email error:',e) }
     document.getElementById('success-detail').innerHTML='<div style="font-size:13px;color:#888;margin-bottom:4px">'+nombre+'</div><div>'+fmtDate(fecha)+'</div><div class="teal" style="font-size:18px;margin-top:4px">'+turno.replace(' - ',' a ')+' hs</div>'
     document.getElementById('success-email').textContent='Confirmación enviada a '+email
     document.getElementById('calendar-view').style.display='none'
@@ -371,6 +351,5 @@ async function cancelar(id){
 
 loadAvailability()
 </script>
-
-
-</body></html>
+</body>
+</html>
